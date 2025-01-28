@@ -1,0 +1,49 @@
+<div{{ attributes }}>
+    
+    <fieldset class="container grid">
+        <div>
+            <label>Date</label>
+            <input type="date" data-model="date" dataformatas="Y-m-d" value="{{ date ? date|date('Y-m-d') }}" />
+        </div>
+        
+        <div>
+            <label>Date</label>
+            <input type="text" data-model="city" value="{{ city }}" />
+        </div>
+        
+        <div class="conference_show">
+            <label>Category</label>
+            <div class="grid inputgroup">
+                <label>
+                    <input type="checkbox" data-model="category[]" value="conference" />
+                    Conferences
+                </label>
+                
+                <label>
+                    <input type="checkbox" data-model="category[]" value="reunion" />
+                    Reunions
+                </label>
+                
+                <label>
+                    <input type="checkbox" data-model="category[]" value="meeting" />
+                    Meeting
+                </label>
+            </div>
+        </div>
+    </fieldset>
+    
+    <div class="results">
+        
+        <section class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;">
+                
+                {% for conference in this.results %}
+                    {{ include('conference/_card.html.twig', {conference}) }}
+                {% endfor %}
+                
+            </div>
+        </section>
+        
+    </div>
+    
+</div>

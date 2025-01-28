@@ -1,3 +1,55 @@
-body {
-    background-color: skyblue;
+html, body {
+  font-size: 100%;
+  font-weight: 300;
+}
+.container {
+  max-width: 1600px;
+}
+figure {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+}
+figcaption {
+  position: absolute;
+  inset: 0 0 0 0;
+  text-align: center;
+  background: #0004;
+  backdrop-filter: blur(2px);
+  transition: .25s all;
+  transform: translateY(95%);
+}
+figure:hover figcaption {
+  background: #0009;
+  transform: translateY(0%);
+}
+
+.ConferenceCard:has(form) .fields {
+  display: none;
+}
+
+article header {
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+}
+
+article .field {
+  padding: .5rem 0;
+  & + .field {
+    border-top: 1px solid #0004;
+  }
+  label {
+    font-size: smaller;
+    font-weight: 200;
+    margin-bottom: .25rem;
+    opacity: .5;
+  }
+}
+
+.inputgroup {
+  padding: var(--pico-form-element-spacing-vertical) var(--pico-form-element-spacing-horizontal);
 }

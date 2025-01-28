@@ -1,0 +1,85 @@
+<article class="ConferenceCard">
+
+    <turbo-frame id="conference_card_show_{{ conference.id }}">
+        {% block card_show %}
+            <header>
+                <h3>{{ conference.title }}</h3>
+                <figure>
+                    <img
+                        src="https://picsum.photos/seed/{{ conference.id }}/320/180"
+                        height="180"
+                        width="320"
+                        alt="{{ conference.title }}"
+                    />
+                    <figcaption>{{ conference.title }}</figcaption>
+                </figure>
+            </header>
+
+            <div class="fields">
+                <div class="field">
+                    <label>Description</label>
+                    <span>{{ conference.description }}</span>
+                </div>
+                <div class="grid">
+                    <div class="field">
+                        <label>City</label>
+                        <span>{{ conference.city }}</span>
+                    </div>
+                    <div class="field">
+                        <label>Country</label>
+                        <span>{{ conference.country }}</span>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="field">
+                        <label>Date</label>
+                        <span>{{ conference.date|date('Y-m-d') }}</span>
+                    </div>
+                    <div class="field">
+                        <label>Price</label>
+                        <span>{{ conference.price }}</span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Category</label>
+                    <span>{{ conference.category }}</span>
+                </div>
+            </div>
+        {% endblock %}
+    </turbo-frame>
+
+    <turbo-frame id="conference_card_form_{{ conference.id }}">
+        {% block card_form %}
+            {% if form is defined %}
+                <div>
+                    {{ form_start(form) }}
+    
+                    {{ form_row(form.title) }}
+                    {{ form_row(form.description) }}
+                    {{ form_row(form.price) }}
+                    {{ form_row(form.date) }}
+                    {{ form_row(form.city) }}
+                    {{ form_row(form.country) }}
+                    {{ form_row(form.category) }}
+    
+                    <input type="submit" value="Update"/>
+                    {{ form_end(form) }}
+                </div>
+            {% endif %}
+        {% endblock %}
+    </turbo-frame>
+
+    {% block card_footer %}
+        <footer>
+            <div class="grid">
+                <div>
+                    <a
+                        class="primary" href="{{ path('app_conference_update', {id: conference.id}) }}"
+                        data-turbo-frame="conference_card_form_{{ conference.id }}"
+                    >Update</a>
+                </div>
+            </div>
+        </footer>
+    {% endblock %}
+
+</article>

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    
+    <h1>Show  Conference</h1>
+    
+    <section>
+        
+        <article>
+            <turbo-frame id="conference_card_show_{{ conference.id }}">
+                {{ block('card_show', 'conference/_card.html.twig') }}
+            </turbo-frame>
+        </article>
+        
+    </section>
+    
+{% endblock %}
